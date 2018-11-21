@@ -42,5 +42,5 @@ def draw_date(text):
     return date_area, time_area
 
 if __name__ == "__main__":
-    gen_num('123')
-    gen_date(['10.13', '晚上 18:30 入场'])
+    gen_num('124')
+    gen_date(['10.27', '晚上 18:30 入场'])
