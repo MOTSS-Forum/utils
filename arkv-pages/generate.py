@@ -2,8 +2,8 @@ from os import walk
 from yaml import load, dump
 
 BASE_DIR = './export/wechat/'
-SAVES = './export/saves.yml'
-README = './export/README.md'
+SAVES = './export/wechat/saves.yml'
+README = './export/wechat/README.md'
 
 
 def generate_yml(pages):
@@ -33,7 +33,6 @@ def generate_readme():
 
     with open(README, 'w') as file:
         file.write(content_str)
-
     return
 
 
@@ -43,6 +42,8 @@ def parse_page(foo):
         content = file.readlines()
         content = [x.strip() for x in content]
     title = content[95][:-6].replace("|", "/")
+    if title == '':
+        title = content[106][:-6].replace("|", "/")
     # date = content[121][-10:-5]
     url = './{}/'.format(foo)
     return title, url

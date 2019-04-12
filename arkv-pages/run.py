@@ -26,6 +26,7 @@ if __name__ == "__main__":
     foo_list = []
     for url in URLS:
         foo = get_foo(url)
+        print(foo)
         foo_list.append(foo)
     print(foo_list)
 

@@ -8,7 +8,7 @@ SAVE_DIR = './export/wechat/'
 FOOS_FILE = './foos'
 
 def download_zip(foo: str):
-    cmd = "curl 'https://archive.today/download/{}.zip' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36' --output {}{}.zip".format(
+    cmd = "curl 'https://archive.today/download/{}.zip' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36' -H 'authority: archive.is' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'upgrade-insecure-requests: 1' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7' -H 'cookie: _ga=GA1.2.661111166.1542719295;tmr_detect=1%7C1542719296018' --output {}{}.zip".format(
         foo, ZIPS_DIR, foo)
     system(cmd)
 
