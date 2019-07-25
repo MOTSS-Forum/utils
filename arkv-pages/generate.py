@@ -1,5 +1,5 @@
 from os import walk
-from yaml import load, dump
+import yaml
 
 BASE_DIR = './export/wechat/'
 SAVES = './export/wechat/saves.yml'
@@ -19,13 +19,13 @@ def generate_yml(pages):
         'title': '微信公众号存档',
     }
     with open(SAVES, 'w') as file:
-        dump(content, file, allow_unicode=True)
+        yaml.dump(content, file, allow_unicode=True)
     return
 
 
 def generate_readme():
     with open(SAVES, 'r') as file:
-        content = load(file)
+        content = yaml.load(file, Loader=yaml.FullLoader)
 
     content_str = '## {}\n\n'.format(content['title'])
     for page in content['pages']:
@@ -44,6 +44,8 @@ def parse_page(foo):
     title = content[95][:-6].replace("|", "/")
     if title == '':
         title = content[106][:-6].replace("|", "/")
+    if title[0] == '<':
+        title = content[109][:-6].replace("|", "/")
     # date = content[121][-10:-5]
     url = './{}/'.format(foo)
     return title, url

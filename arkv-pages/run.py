@@ -1,5 +1,4 @@
 import archiveis
-import urllib
 from os import system
 
 URLS_FILE = './urls'
@@ -16,6 +15,7 @@ def import_urls(filename):
 
 
 def get_foo(url):
+    print(url)
     archive_url = archiveis.capture(url)
     foo = archive_url.split('/')[-1]
     return foo
